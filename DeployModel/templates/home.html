@@ -7,10 +7,16 @@
     <body>
         This is my homepage for app.
 
-        <form action=''>
-            
+        <form action="{% url 'result'%}">
 
+            {% csrf_token %}
 
+            variance:<input type="text" required name="variance"><br><br> 
+            skewness:<input type="text" required name="skewness"><br><br>
+            curtosis:<input type="text" required name="curtosis"><br><br>
+            entropy:<input type="text" required name="entropy"><br><br>
+
+        <input type="submit" name="" value="submit">
         </form>
     </body>
 </html>
