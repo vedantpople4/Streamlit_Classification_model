@@ -4,13 +4,14 @@ import joblib
 
 
 
-
 def home(request):
     return render(request, 'home.html')
 
 def result(request):
     classifier = joblib.load('final_model.sav')
+    
     lis = []
+
     lis.append(request.GET['variance'])
     lis.append(request.GET['skewness'])
     lis.append(request.GET['curtosis'])
