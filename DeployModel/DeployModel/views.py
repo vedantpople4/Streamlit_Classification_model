@@ -17,7 +17,7 @@ def result(request):
     lis.append(request.GET['curtosis'])
     lis.append(request.GET['entropy'])
 
-    print(lis)
+    ans = classifier.predict([lis])
 
 
-    return render(request, 'result.html')
+    return render(request, 'result.html', {'ans':ans})
