@@ -49,10 +49,6 @@ def generate(smiles, verbose=False):
 
     return descriptors
 
-######################
-# Page Title
-######################
-
 image = Image.open('solubility-logo.jpg')
 
 st.image(image, use_column_width=True)
@@ -64,37 +60,25 @@ Data obtained from the John S. Delaney. [ESOL:  Estimating Aqueous Solubility 
 ***
 """)
 
-
-######################
-# Input molecules (Side Panel)
-######################
-
 st.sidebar.header('User Input Features')
 
-## Read SMILES input
+
 SMILES_input = "NCCCC\nCCC\nCN"
 
 SMILES = st.sidebar.text_area("SMILES input", SMILES_input)
-SMILES = "C\n" + SMILES #Adds C as a dummy, first item
+SMILES = "C\n" + SMILES 
 SMILES = SMILES.split('\n')
 
 st.header('Input SMILES')
-SMILES[1:] # Skips the dummy first item
-
-## Calculate molecular descriptors
+SMILES[1:] 
 st.header('Computed molecular descriptors')
 X = generate(SMILES)
-X[1:] # Skips the dummy first item
+X[1:]
 
-######################
-# Pre-built model
-######################
-
-# Reads in saved model
 load_model = pickle.load(open('solubility_model.pkl', 'rb'))
 
-# Apply model to make predictions
+
 prediction = load_model.predict(X)
-#prediction_proba = load_model.predict_proba(X)
+
 
 st.header('Predicted LogS values')
